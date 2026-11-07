@@ -4,613 +4,878 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MathWord | Educator Portal</title>
+<title>MathWord Educator Site</title>
 <style>
 :root {
-  --blue:#1769aa;
-  --navy:#183b5b;
-  --light:#edf4fa;
-  --line:#dce5ed;
-  --text:#263746;
-  --muted:#718294;
-  --white:#fff;
+  --navy: #142b4a;
+  --blue: #2368b2;
+  --blue-light: #eaf2fb;
+  --ink: #202b38;
+  --muted: #657386;
+  --line: #dce3eb;
+  --surface: #ffffff;
+  --background: #f5f7fa;
 }
-* {box-sizing:border-box}
+* { box-sizing: border-box; }
 body {
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:var(--text);
-  background:#f5f7fa;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+  background: var(--background);
 }
-button,input,textarea,select {font:inherit}
-button {cursor:pointer}
-.topbar {
-  height:66px;
-  background:white;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 28px;
-  position:sticky;
-  top:0;
-  z-index:10;
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+header {
+  height: 68px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 .brand {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:21px;
-  font-weight:700;
-  color:var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -.5px;
 }
-.brand-icon {
-  width:36px;height:36px;border-radius:9px;
-  background:var(--blue);color:white;
-  display:grid;place-items:center;font-weight:bold;
+.brand-mark {
+  width: 37px;
+  height: 37px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: var(--navy);
+  color: white;
+  font-weight: 700;
 }
-.brand small {
-  display:block;font-size:9px;color:#8494a3;
-  letter-spacing:1.2px;margin-top:3px;
+.header-note {
+  font-size: 12px;
+  color: var(--muted);
 }
-.top-actions {display:flex;align-items:center;gap:12px}
-.top-actions button,.primary,.secondary {
-  border:1px solid var(--line);
-  background:white;
-  border-radius:6px;
-  padding:10px 15px;
-  color:var(--navy);
+nav {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
-.primary {
-  background:var(--blue);color:white;border-color:var(--blue);
+nav button {
+  background: transparent;
+  border: 0;
+  color: #536174;
+  padding: 11px 13px;
+  border-radius: 6px;
+  font-size: 14px;
 }
-.primary:hover {background:#10588f}
-.secondary:hover,.top-actions button:hover {background:var(--light)}
-.layout {display:flex;min-height:calc(100vh - 66px)}
-.sidebar {
-  width:230px;flex-shrink:0;
-  background:white;border-right:1px solid var(--line);
-  padding:24px 14px;
+nav button:hover, nav button.active {
+  color: var(--blue);
+  background: var(--blue-light);
 }
-.side-label {
-  color:#91a0ae;font-size:10px;font-weight:bold;
-  letter-spacing:1.2px;padding:12px 12px 8px;
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 34px 28px 70px;
 }
-.nav-button {
-  width:100%;border:0;background:transparent;
-  text-align:left;padding:12px;border-radius:6px;
-  color:#536779;margin:2px 0;font-size:14px;
-}
-.nav-button:hover,.nav-button.active {
-  background:#eaf3fb;color:var(--blue);font-weight:bold;
-}
-.main {flex:1;min-width:0;padding:30px 36px;max-width:1500px}
-.page {display:none}
-.page.active {display:block}
+.page { display: none; }
+.page.active { display: block; }
+
 .eyebrow {
-  color:var(--blue);font-size:11px;font-weight:bold;
-  letter-spacing:1.3px;text-transform:uppercase;
+  color: var(--blue);
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
-h1 {font-size:29px;font-weight:600;margin:9px 0}
-.subtitle {color:var(--muted);font-size:14px;line-height:1.6}
-.section-title {
-  font-size:18px;font-weight:600;margin:30px 0 14px;
+h1 {
+  color: var(--navy);
+  font-size: 34px;
+  letter-spacing: -1px;
+  margin: 0 0 12px;
 }
-.grid {
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;
+h2 {
+  color: var(--navy);
+  font-size: 23px;
+  margin: 0 0 14px;
 }
-.card {
-  background:white;border:1px solid var(--line);
-  border-radius:9px;padding:19px;
+h3 {
+  color: var(--navy);
+  font-size: 17px;
+  margin: 0 0 8px;
 }
-.card h3 {font-size:16px;margin:0 0 8px}
-.card p {font-size:13px;color:var(--muted);line-height:1.5}
-.card-icon {
-  width:38px;height:38px;border-radius:8px;
-  display:grid;place-items:center;background:#eaf3fb;
-  color:var(--blue);font-size:19px;margin-bottom:14px;
+p {
+  line-height: 1.6;
+  color: var(--muted);
 }
-.card-link {
-  color:var(--blue);font-size:13px;font-weight:bold;
-  border:0;background:none;padding:8px 0 0;
+.hero {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 38px;
+  margin-bottom: 30px;
 }
-.banner {
-  background:#eaf3fb;border:1px solid #d6e6f4;
-  padding:22px;border-radius:9px;margin-top:20px;
+.hero p { max-width: 650px; margin-bottom: 22px; }
+.primary-button {
+  background: var(--blue);
+  color: white;
+  border: 1px solid var(--blue);
+  padding: 11px 17px;
+  border-radius: 6px;
+  font-weight: 600;
 }
-.banner h2 {font-size:18px;margin:0 0 7px;color:var(--navy)}
-.banner p {font-size:13px;color:#526b80;margin:0;line-height:1.5}
-.toolbar {
-  display:flex;gap:10px;flex-wrap:wrap;margin:20px 0;
+.primary-button:hover { background: #185594; }
+.secondary-button {
+  background: white;
+  border: 1px solid #cbd5e1;
+  color: var(--navy);
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: 600;
 }
-.search {
-  flex:1;min-width:200px;padding:12px 14px;
-  border:1px solid var(--line);border-radius:6px;
-  background:white;
+.secondary-button:hover { background: #f1f5f9; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 30px 0 15px;
 }
-.resource-grid {
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
+.section-heading p { margin: 0; font-size: 13px; }
+
+.recent-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
 }
-.resource {
-  display:flex;gap:15px;align-items:flex-start;
-  background:white;border:1px solid var(--line);
-  border-radius:8px;padding:17px;
+.recent-item {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 17px;
+  min-height: 105px;
 }
-.pdf-icon {
-  width:43px;height:48px;border-radius:5px;
-  background:#fff0ef;color:#c44b43;
-  display:grid;place-items:center;font-weight:bold;
-  font-size:12px;flex-shrink:0;
+.recent-item button {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--blue);
+  font-weight: 700;
+  text-align: left;
 }
-.resource-info {flex:1;min-width:0}
-.resource-info h3 {margin:2px 0 6px;font-size:15px}
-.resource-info p {margin:0;color:var(--muted);font-size:12px}
-.resource-actions {display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.resource-actions button {
-  border:1px solid var(--line);background:white;
-  padding:7px 10px;border-radius:5px;
-  color:var(--blue);font-size:12px;
+.recent-item small {
+  display: block;
+  color: var(--muted);
+  margin-top: 9px;
 }
-.resource-actions button:hover {background:var(--light)}
-.tag {
-  display:inline-block;font-size:10px;font-weight:bold;
-  color:#55748d;background:#edf3f8;
-  border-radius:4px;padding:4px 7px;margin-bottom:8px;
+.empty-state {
+  padding: 22px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  color: var(--muted);
+  background: white;
+  grid-column: 1 / -1;
 }
-.form-card {
-  background:white;border:1px solid var(--line);
-  border-radius:9px;padding:22px;max-width:760px;
+
+.search-row {
+  display: flex;
+  gap: 12px;
+  margin: 23px 0;
 }
-.form-card label {display:block;font-size:13px;font-weight:bold;margin:15px 0 6px}
-.form-card input,.form-card textarea,.form-card select {
-  width:100%;padding:11px;border:1px solid var(--line);
-  border-radius:5px;background:white;
+.search-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: white;
+  outline: none;
 }
-.form-card textarea {min-height:110px;resize:vertical}
-.form-card button {margin-top:16px}
-.lesson-list {display:grid;gap:12px;margin-top:20px}
+.search-row input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px #2368b21c;
+}
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.unit-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 20px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.unit-card:hover {
+  border-color: #9bbce0;
+  box-shadow: 0 3px 12px #142b4a0d;
+}
+.unit-number {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+.unit-card p { font-size: 13px; margin: 8px 0 16px; }
+.unit-card button {
+  background: transparent;
+  color: var(--blue);
+  border: 0;
+  padding: 0;
+  font-weight: 700;
+}
+.unit-card button:hover { text-decoration: underline; }
+
+.back-button {
+  border: 0;
+  background: transparent;
+  color: var(--blue);
+  padding: 0;
+  margin-bottom: 22px;
+  font-weight: 700;
+}
+.unit-description {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 23px;
+  border-radius: 9px;
+  margin: 20px 0;
+}
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .lesson {
-  background:white;border:1px solid var(--line);
-  border-radius:8px;padding:17px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 17px 19px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
-.lesson h3 {margin:0 0 7px;font-size:15px}
-.lesson p {font-size:13px;color:var(--muted);white-space:pre-wrap}
-.empty {color:var(--muted);font-size:13px;padding:20px}
-.notice {
-  margin-top:20px;padding:13px 15px;
-  background:#fff8e8;border:1px solid #f0e1bd;
-  border-radius:7px;color:#765d28;font-size:12px;line-height:1.5;
+.lesson-title { font-weight: 700; color: var(--navy); }
+.lesson-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 5px;
 }
+.lesson-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.lesson-actions button {
+  font-size: 12px;
+  padding: 8px 11px;
+}
+.lesson-actions button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.info-panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 23px;
+  margin-bottom: 15px;
+}
+.info-panel p { margin-bottom: 0; }
 footer {
-  border-top:1px solid var(--line);margin-top:45px;
-  padding:20px 0;color:#91a0ae;font-size:11px;
+  border-top: 1px solid var(--line);
+  background: white;
+  padding: 23px 5%;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.7;
 }
-.modal-backdrop {
-  display:none;position:fixed;inset:0;
-  background:#14283b88;z-index:30;
-  align-items:center;justify-content:center;padding:20px;
-}
-.modal-backdrop.open {display:flex}
 .modal {
-  background:white;width:min(620px,100%);
-  border-radius:10px;padding:20px;
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: #101c2dcc;
+  padding: 3vh 3vw;
 }
-.modal-head {display:flex;justify-content:space-between;align-items:center}
-.modal-head h2 {font-size:18px}
-.modal-head button {border:0;background:none;font-size:23px}
-#pdfFrame {width:100%;height:65vh;border:1px solid var(--line);margin-top:12px}
-@media(max-width:850px) {
-  .sidebar {width:190px}
-  .main {padding:24px 20px}
-  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+.modal.open {
+  display: flex;
+  flex-direction: column;
 }
-@media(max-width:620px) {
-  .layout {display:block}
-  .sidebar {width:100%;display:flex;overflow-x:auto;padding:8px}
-  .side-label {display:none}
-  .nav-button {white-space:nowrap;width:auto}
-  .main {padding:22px 15px}
-  .grid,.resource-grid {grid-template-columns:1fr}
-  .topbar {padding:0 14px}
-  .top-actions button {padding:8px}
+.modal-top {
+  background: white;
+  padding: 13px 17px;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.modal-top strong { color: var(--navy); }
+.modal-top button {
+  background: transparent;
+  border: 0;
+  color: var(--navy);
+  font-size: 22px;
+}
+#slidesFrame {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  background: white;
+  border-radius: 0 0 8px 8px;
+}
+@media(max-width:760px) {
+  header {
+    height: auto;
+    min-height: 65px;
+    padding: 12px 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+  nav button { white-space: nowrap; }
+  main { padding: 25px 16px 50px; }
+  .hero { padding: 25px; }
+  h1 { font-size: 28px; }
+  .unit-grid, .recent-list { grid-template-columns: 1fr; }
+  .lesson { align-items: flex-start; flex-direction: column; }
+  .lesson-actions { flex-wrap: wrap; }
+  .search-row { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
-<header class="topbar">
+<header>
   <div class="brand">
-    <div class="brand-icon">M</div>
-    <div>
-      MathWord
-      <small>FAN-MADE EDUCATOR PORTAL</small>
-    </div>
+    <div class="brand-mark">M</div>
+    <span>MathWord</span>
   </div>
-  <div class="top-actions">
-    <button onclick="showPage('resources')">My Resources</button>
-    <button class="primary" onclick="showPage('planner')">＋ New Lesson</button>
-  </div>
+  <nav>
+    <button class="active" data-page="home">Home</button>
+    <button data-page="curriculum">Curriculum</button>
+    <button data-page="professional">Professional Learning</button>
+    <button data-page="help">Help</button>
+  </nav>
 </header>
 
-<div class="layout">
-  <aside class="sidebar">
-    <div class="side-label">WORKSPACE</div>
-    <button class="nav-button active" data-page="home" onclick="showPage('home')">⌂ &nbsp; Dashboard</button>
-    <button class="nav-button" data-page="curriculum" onclick="showPage('curriculum')">▤ &nbsp; Curriculum</button>
-    <button class="nav-button" data-page="resources" onclick="showPage('resources')">▧ &nbsp; Resources & PDFs</button>
-    <button class="nav-button" data-page="planner" onclick="showPage('planner')">▣ &nbsp; Lesson Planner</button>
-    <div class="side-label">MY PLAY SCHOOL</div>
-    <button class="nav-button" data-page="about" onclick="showPage('about')">ⓘ &nbsp; About MathWord</button>
-  </aside>
-
-  <main class="main">
-
-    <section class="page active" id="home">
-      <div class="eyebrow">HOME PLAY SCHOOL / EDUCATOR WORKSPACE</div>
+<main>
+  <section class="page active" id="home">
+    <div class="hero">
+      <div class="eyebrow">MathWord Educator Site</div>
       <h1>Welcome to MathWord</h1>
-      <p class="subtitle">Your mathematics teaching and resource workspace.</p>
-
-      <div class="banner">
-        <h2>Grade 5 Mathematics</h2>
-        <p>Organize curriculum materials, prepare lessons, and keep your teaching resources together in one place.</p>
-      </div>
-
-      <h2 class="section-title">Your workspace</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="card-icon">▤</div>
-          <h3>Curriculum</h3>
-          <p>Browse your Grade 5 units and mathematics topics.</p>
-          <button class="card-link" onclick="showPage('curriculum')">Explore curriculum →</button>
-        </div>
-        <div class="card">
-          <div class="card-icon">▧</div>
-          <h3>Resource Library</h3>
-          <p>Open your Student Book, teacher materials, and other PDFs.</p>
-          <button class="card-link" onclick="showPage('resources')">Open resources →</button>
-        </div>
-        <div class="card">
-          <div class="card-icon">▣</div>
-          <h3>Lesson Planner</h3>
-          <p>Create and save your own lesson plans on this device.</p>
-          <button class="card-link" onclick="showPage('planner')">Plan a lesson →</button>
-        </div>
-      </div>
-
-      <h2 class="section-title">Recently added resources</h2>
-      <div class="card">
-        <span class="tag">GRADE 5</span>
-        <h3>Student Book PDF</h3>
-        <p>Your Student Book link has been added to the resource library.</p>
-        <button class="card-link" onclick="openResource('student')">Open Student Book →</button>
-      </div>
-    </section>
-
-    <section class="page" id="curriculum">
-      <div class="eyebrow">ACADEMIC CONTENT</div>
-      <h1>Curriculum</h1>
-      <p class="subtitle">Grade 5 mathematics learning areas. Add your own unit notes and materials.</p>
-
-      <div class="grid" style="margin-top:22px">
-        <div class="card"><div class="card-icon">⅟</div><h3>Fractions & Decimals</h3><p>Equivalent fractions, comparing values, and decimal operations.</p></div>
-        <div class="card"><div class="card-icon">×</div><h3>Multiplication & Division</h3><p>Multi-digit computation, strategies, and problem solving.</p></div>
-        <div class="card"><div class="card-icon">▱</div><h3>Measurement & Geometry</h3><p>Volume, measurement conversions, shapes, and coordinate grids.</p></div>
-        <div class="card"><div class="card-icon">＝</div><h3>Expressions & Patterns</h3><p>Numerical expressions, patterns, and mathematical relationships.</p></div>
-        <div class="card"><div class="card-icon">◷</div><h3>Data & Graphing</h3><p>Representing data and interpreting information.</p></div>
-        <div class="card"><div class="card-icon">✎</div><h3>Problem Solving</h3><p>Explain reasoning, use models, and solve multi-step problems.</p></div>
-      </div>
-
-      <div class="notice">These are general Grade 5 topic areas, not a copied official curriculum sequence. Add your own unit titles and lesson materials.</div>
-    </section>
-
-    <section class="page" id="resources">
-      <div class="eyebrow">MY TEACHING MATERIALS</div>
-      <h1>Resources & PDFs</h1>
-      <p class="subtitle">Keep your digital books, guides, and classroom documents together.</p>
-
-      <div class="toolbar">
-        <input class="search" id="resourceSearch" placeholder="Search resources..." oninput="filterResources()">
-        <button class="primary" onclick="addResource()">＋ Add PDF link</button>
-        <button class="secondary" onclick="document.getElementById('pdfUpload').click()">↑ Upload PDF</button>
-        <input id="pdfUpload" type="file" accept="application/pdf" hidden onchange="uploadPDF(event)">
-      </div>
-
-      <div class="resource-grid" id="resourceGrid"></div>
-
-      <div class="notice">
-        Uploaded PDFs can be previewed temporarily in this browser. GitHub Pages cannot save an uploaded file to your website automatically. To make a PDF available permanently to your website, add the file to your GitHub repository or use a stable sharing link that allows access.
-      </div>
-    </section>
-
-    <section class="page" id="planner">
-      <div class="eyebrow">TEACHING WORKSPACE</div>
-      <h1>Lesson Planner</h1>
-      <p class="subtitle">Write and save your own lesson plans.</p>
-
-      <div class="form-card">
-        <label for="lessonTitle">Lesson title</label>
-        <input id="lessonTitle" placeholder="Example: Multiplying Fractions">
-
-        <label for="lessonDate">Lesson date</label>
-        <input id="lessonDate" type="date">
-
-        <label for="lessonUnit">Unit or subject</label>
-        <input id="lessonUnit" placeholder="Example: Unit 2 — Multiplication">
-
-        <label for="lessonNotes">Lesson notes and activities</label>
-        <textarea id="lessonNotes" placeholder="Learning goal, materials, activities, and reflection..."></textarea>
-
-        <button class="primary" onclick="saveLesson()">Save Lesson Plan</button>
-      </div>
-
-      <h2 class="section-title">Saved lesson plans</h2>
-      <div class="lesson-list" id="lessonList"></div>
-    </section>
-
-    <section class="page" id="about">
-      <div class="eyebrow">ABOUT THIS PROJECT</div>
-      <h1>About MathWord</h1>
-      <div class="card" style="margin-top:20px">
-        <h3>Welcome to MathWord</h3>
-        <p>MathWord is a fan-made educator workspace created for Home Play School. It is designed to organize mathematics lessons, curriculum notes, and teaching resources.</p>
-        <p><strong>MathWord is not an official Math Learning Center product.</strong> It is independently created and is not affiliated with or endorsed by The Math Learning Center.</p>
-      </div>
-      <div class="card" style="margin-top:15px">
-        <h3>Helpful official website</h3>
-        <p>Visit the official Math Learning Center educator website separately for its own curriculum resources and account access.</p>
-        <a href="https://teach.mathlearningcenter.org/" target="_blank" rel="noopener">Visit the official MLC Educator Site ↗</a>
-      </div>
-    </section>
-
-    <footer>
-      MathWord Fan-Made Educator Portal · Home Play School
-      <br>Independent project. Not affiliated with The Math Learning Center.
-    </footer>
-  </main>
-</div>
-
-<div class="modal-backdrop" id="pdfModal">
-  <div class="modal">
-    <div class="modal-head">
-      <h2 id="pdfTitle">PDF Preview</h2>
-      <button onclick="closePDF()">×</button>
+      <p>
+        Find classroom materials, explore curriculum topics, and access
+        lesson presentations in one organized place.
+      </p>
+      <button class="primary-button" onclick="showPage('curriculum')">
+        Explore the curriculum
+      </button>
     </div>
-    <iframe id="pdfFrame" title="PDF preview"></iframe>
-    <p class="subtitle">If the preview does not load, use the Open PDF button on the resource card.</p>
+
+    <div class="section-heading">
+      <h2>Recently viewed</h2>
+      <p>Your recent lessons are saved on this device.</p>
+    </div>
+    <div class="recent-list" id="recentList">
+      <div class="empty-state">
+        Lessons you open will appear here.
+      </div>
+    </div>
+
+    <div class="section-heading">
+      <h2>Curriculum</h2>
+    </div>
+    <div class="info-panel">
+      <h3>Bridges in Mathematics — Grade 5</h3>
+      <p>
+        Browse the eight Grade 5 unit areas and their MathWord lesson
+        outlines.
+      </p>
+      <button class="secondary-button" onclick="showPage('curriculum')">
+        View all units
+      </button>
+    </div>
+  </section>
+
+  <section class="page" id="curriculum">
+    <div class="eyebrow">Curriculum Library</div>
+    <h1>Grade 5 Curriculum</h1>
+    <p>Explore the unit areas and lesson outlines.</p>
+    <div class="search-row">
+      <input id="unitSearch" type="search"
+        placeholder="Search units and lesson topics..."
+        aria-label="Search curriculum">
+    </div>
+    <div class="unit-grid" id="unitGrid"></div>
+  </section>
+
+  <section class="page" id="unit-detail">
+    <button class="back-button" onclick="showPage('curriculum')">
+      ← Back to curriculum
+    </button>
+    <div class="eyebrow" id="detailEyebrow">Grade 5 Curriculum</div>
+    <h1 id="detailTitle">Unit</h1>
+    <div class="unit-description">
+      <p id="detailDescription"></p>
+    </div>
+    <div class="section-heading">
+      <h2>Lesson topics</h2>
+    </div>
+    <div class="lesson-list" id="lessonList"></div>
+  </section>
+
+  <section class="page" id="professional">
+    <div class="eyebrow">Learning & Development</div>
+    <h1>Professional Learning</h1>
+    <p>Resources for planning, instruction, and continued learning.</p>
+    <div class="info-panel">
+      <h3>Lesson planning</h3>
+      <p>Use the unit outlines to organize lesson preparation and classroom materials.</p>
+    </div>
+    <div class="info-panel">
+      <h3>Presentation library</h3>
+      <p>Configured Google Slides presentations can be previewed or copied from their lesson entries.</p>
+    </div>
+    <div class="info-panel">
+      <h3>Independent project</h3>
+      <p>MathWord is an independent educational project and is not affiliated with The Math Learning Center.</p>
+    </div>
+  </section>
+
+  <section class="page" id="help">
+    <div class="eyebrow">Support</div>
+    <h1>Help</h1>
+    <div class="info-panel">
+      <h3>How do I find a lesson?</h3>
+      <p>Open Curriculum, choose a unit, and select a lesson topic.</p>
+    </div>
+    <div class="info-panel">
+      <h3>Why is Preview unavailable?</h3>
+      <p>A lesson needs a configured Google Slides link before its presentation can be previewed.</p>
+    </div>
+    <div class="info-panel">
+      <h3>Why can't someone open a presentation?</h3>
+      <p>Check the Google Slides sharing settings. The viewer needs permission to access the presentation.</p>
+    </div>
+    <div class="info-panel">
+      <h3>Is MathWord the official Bridges website?</h3>
+      <p>No. MathWord is an independent fan-made educational project. Bridges in Mathematics is a program of The Math Learning Center.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  MathWord Educator Site · Independent educational project
+  <br>
+  Bridges in Mathematics is a trademark of The Math Learning Center.
+  MathWord is not an official Math Learning Center website.
+</footer>
+
+<div class="modal" id="slidesModal" role="dialog" aria-modal="true">
+  <div class="modal-top">
+    <strong id="modalTitle">Lesson presentation</strong>
+    <button onclick="closeSlides()" aria-label="Close preview">×</button>
   </div>
+  <iframe id="slidesFrame" title="Google Slides presentation"
+    allowfullscreen></iframe>
 </div>
 
 <script>
-// Your supplied Student Book link.
-// This is a secure Google viewer link and may expire.
-const initialStudentBook =
-"https://doc-0k-2k-apps-viewer.googleusercontent.com/viewer/secure/pdf/a9ngri6dks3cvuli6839924hd3bn8u1e/5b0hqrmfauiorbl298kpmt0meuu9217m/1794011325000/drive/10049479208573245461/ACFrOgBUi6GwMJe1opSxOHp3pQ65AsW-ud61daQtPL72tMFOmXZQMazus83naLWcVnPSkve4EglZ_FzQ9KQ5Ah7wpkB5zsIqchCRMk-wdathKY2FawGORXdofWfJWH91BJ3jb5nzsFiFZkzdtTRmSbusPgCHlWOtMKqKhCXW0VbAcYVhZ6nSKzQHHh4JFwDeWGQEOmtikrnNRhtBVWzk1hZMvFGNQsWbDhOdDlDISg==?authuser=0&print=true&nonce=jjgdpo2bi0dcc&user=10049479208573245461&hash=m7jnedbr8639jpfhje73free5hsj7n76";
+/*
+  MATHWORD LESSON CONFIGURATION
 
-const defaultResources = [
-  {id:"student",name:"Grade 5 Student Book",type:"Student Book",url:initialStudentBook},
-  {id:"teacher",name:"Grade 5 Teacher Guide",type:"Teacher Guide",url:""},
-  {id:"assessment",name:"Grade 5 Assessment Book",type:"Assessment",url:""},
-  {id:"workplaces",name:"Grade 5 Work Places",type:"Work Places",url:""}
+  Add the actual Google Slides URL to the "slides" field for a lesson.
+  Example:
+  slides: "https://docs.google.com/presentation/d/YOUR_ID/edit"
+
+  The site automatically creates Preview and Make a copy links.
+  No visitor-facing Add buttons are provided.
+*/
+
+const mathwordUnits = [
+  {
+    id: 1,
+    title: "Expressions, Equations & Volume",
+    description: "Explore numerical expressions, multiplication and division, fractions, and the volume of rectangular prisms.",
+    topics: [
+      "Multiplication and division strategies",
+      "Understanding numerical expressions",
+      "Writing and interpreting equations",
+      "Working with fractions",
+      "Rectangular prisms and volume",
+      "Solving multi-step problems"
+    ]
+  },
+  {
+    id: 2,
+    title: "Adding & Subtracting Fractions",
+    description: "Build understanding of fraction equivalence and strategies for adding and subtracting fractions.",
+    topics: [
+      "Equivalent fractions",
+      "Common denominators",
+      "Adding fractions",
+      "Subtracting fractions",
+      "Mixed numbers",
+      "Fraction word problems"
+    ]
+  },
+  {
+    id: 3,
+    title: "Place Value & Decimals",
+    description: "Explore decimal place value, decimal operations, measurement, and mathematical reasoning.",
+    topics: [
+      "Decimal place value",
+      "Comparing decimals",
+      "Adding decimals",
+      "Subtracting decimals",
+      "Measurement and conversions",
+      "Division strategies"
+    ]
+  },
+  {
+    id: 4,
+    title: "Multiplication & Division",
+    description: "Develop strategies for multi-digit multiplication and division and apply them to real-world problems.",
+    topics: [
+      "Multi-digit multiplication",
+      "Area models",
+      "Partial products",
+      "Division strategies",
+      "Interpreting remainders",
+      "Multi-step word problems"
+    ]
+  },
+  {
+    id: 5,
+    title: "Multiplying Fractions",
+    description: "Investigate fraction multiplication and division through models, visual reasoning, and problem solving.",
+    topics: [
+      "Multiplying fractions",
+      "Fraction models",
+      "Whole numbers and fractions",
+      "Scaling and comparison",
+      "Division involving fractions",
+      "Fraction problem solving"
+    ]
+  },
+  {
+    id: 6,
+    title: "Graphing, Geometry & Volume",
+    description: "Explore patterns, coordinate graphing, geometric ideas, and volume.",
+    topics: [
+      "Numerical patterns",
+      "Coordinate grids",
+      "Graphing ordered pairs",
+      "Classifying two-dimensional figures",
+      "Geometric reasoning",
+      "Volume applications"
+    ]
+  },
+  {
+    id: 7,
+    title: "Division & Decimals",
+    description: "Connect division, powers of ten, fractions, and decimal multiplication and division.",
+    topics: [
+      "Division with larger numbers",
+      "Powers of ten",
+      "Fractions and decimals",
+      "Multiplying decimals",
+      "Dividing decimals",
+      "Real-world decimal problems"
+    ]
+  },
+  {
+    id: 8,
+    title: "Solar Design",
+    description: "Apply mathematical thinking to solar energy, design challenges, data, and problem solving.",
+    topics: [
+      "Introducing solar energy",
+      "Solar design challenges",
+      "Collecting and organizing data",
+      "Measurement and calculations",
+      "Designing and testing solutions",
+      "Explaining mathematical thinking"
+    ]
+  }
 ];
 
-let resources = JSON.parse(localStorage.getItem("mathwordResources") || "null") || defaultResources;
-let temporaryFiles = {};
+/*
+  LESSON PRESENTATION LINKS
 
-function saveResources() {
-  localStorage.setItem("mathwordResources",JSON.stringify(resources));
+  These are intentionally blank until the real presentation URLs
+  are available. No fake presentation links are created.
+*/
+
+const mathwordLessons = {};
+
+mathwordUnits.forEach(unit => {
+  mathwordLessons[unit.id] = unit.topics.map((topic, index) => ({
+    title: topic,
+    number: index + 1,
+    slides: ""
+  }));
+});
+
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  const target = document.getElementById(pageId);
+  if (target) target.classList.add("active");
+
+  document.querySelectorAll("nav button").forEach(button => {
+    button.classList.toggle(
+      "active",
+      button.dataset.page === pageId ||
+      (pageId === "unit-detail" && button.dataset.page === "curriculum")
+    );
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.querySelectorAll(".nav-button").forEach(b=>b.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  const button=document.querySelector('[data-page="'+id+'"]');
-  if(button) button.classList.add("active");
-  if(id==="resources") renderResources();
-  if(id==="planner") renderLessons();
-  window.scrollTo(0,0);
-}
+document.querySelectorAll("nav button").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
 
-function safeURL(value) {
-  try {
-    const url=new URL(value);
-    return url.protocol==="https:" || url.protocol==="http:";
-  } catch(e) { return false; }
-}
+function renderUnits(searchText = "") {
+  const grid = document.getElementById("unitGrid");
+  const query = searchText.toLowerCase().trim();
 
-function renderResources() {
-  const grid=document.getElementById("resourceGrid");
-  grid.innerHTML="";
-  resources.forEach(resource=>{
-    const card=document.createElement("article");
-    card.className="resource";
-    card.dataset.search=(resource.name+" "+resource.type).toLowerCase();
+  const filtered = mathwordUnits.filter(unit => {
+    const searchable = [
+      unit.title,
+      unit.description,
+      ...unit.topics
+    ].join(" ").toLowerCase();
 
-    const icon=document.createElement("div");
-    icon.className="pdf-icon";
-    icon.textContent="PDF";
+    return searchable.includes(query);
+  });
 
-    const info=document.createElement("div");
-    info.className="resource-info";
+  grid.innerHTML = "";
 
-    const tag=document.createElement("span");
-    tag.className="tag";
-    tag.textContent=resource.type;
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="empty-state">No matching units or topics found.</div>';
+    return;
+  }
 
-    const title=document.createElement("h3");
-    title.textContent=resource.name;
+  filtered.forEach(unit => {
+    const card = document.createElement("article");
+    card.className = "unit-card";
 
-    const description=document.createElement("p");
-    description.textContent=resource.url ? "A PDF link is saved for this resource." : "No PDF link added yet.";
+    card.innerHTML = `
+      <div class="unit-number">Grade 5 · Unit ${unit.id}</div>
+      <h3>${escapeHTML(unit.title)}</h3>
+      <p>${escapeHTML(unit.description)}</p>
+      <button type="button">Explore unit →</button>
+    `;
 
-    const actions=document.createElement("div");
-    actions.className="resource-actions";
+    card.querySelector("button").addEventListener("click", () => {
+      openUnit(unit.id);
+    });
 
-    const edit=document.createElement("button");
-    edit.textContent=resource.url ? "Change link" : "Add link";
-    edit.onclick=()=>editResource(resource.id);
-
-    actions.appendChild(edit);
-
-    if(resource.url) {
-      const open=document.createElement("button");
-      open.textContent="Open PDF ↗";
-      open.onclick=()=>openResource(resource.id);
-      actions.appendChild(open);
-
-      const preview=document.createElement("button");
-      preview.textContent="Preview";
-      preview.onclick=()=>previewResource(resource.id);
-      actions.appendChild(preview);
-    }
-
-    info.append(tag,title,description,actions);
-    card.append(icon,info);
     grid.appendChild(card);
   });
-  filterResources();
 }
 
-function filterResources() {
-  const query=(document.getElementById("resourceSearch").value || "").toLowerCase();
-  document.querySelectorAll(".resource").forEach(card=>{
-    card.style.display=card.dataset.search.includes(query) ? "flex" : "none";
+function openUnit(unitId) {
+  const unit = mathwordUnits.find(item => item.id === unitId);
+  if (!unit) return;
+
+  document.getElementById("detailEyebrow").textContent =
+    `Grade 5 · Unit ${unit.id}`;
+
+  document.getElementById("detailTitle").textContent = unit.title;
+  document.getElementById("detailDescription").textContent = unit.description;
+
+  const list = document.getElementById("lessonList");
+  list.innerHTML = "";
+
+  mathwordLessons[unitId].forEach(lesson => {
+    const row = document.createElement("div");
+    row.className = "lesson";
+
+    const content = document.createElement("div");
+    const title = document.createElement("div");
+    title.className = "lesson-title";
+    title.textContent = `Lesson ${lesson.number}: ${lesson.title}`;
+
+    const subtitle = document.createElement("div");
+    subtitle.className = "lesson-subtitle";
+    subtitle.textContent = "Grade 5 · Unit " + unit.id;
+
+    content.append(title, subtitle);
+
+    const actions = document.createElement("div");
+    actions.className = "lesson-actions";
+
+    const preview = document.createElement("button");
+    preview.className = "secondary-button";
+    preview.textContent = "Preview";
+    preview.disabled = !getSlidesId(lesson.slides);
+    preview.title = preview.disabled
+      ? "Presentation link has not been configured"
+      : "Preview presentation";
+
+    preview.addEventListener("click", () => {
+      previewSlides(lesson, unit);
+    });
+
+    const copy = document.createElement("button");
+    copy.className = "primary-button";
+    copy.textContent = "Make a copy";
+    copy.disabled = !getSlidesId(lesson.slides);
+    copy.title = copy.disabled
+      ? "Presentation link has not been configured"
+      : "Make your own copy";
+
+    copy.addEventListener("click", () => {
+      makeSlidesCopy(lesson);
+    });
+
+    actions.append(preview, copy);
+    row.append(content, actions);
+    list.appendChild(row);
+
+    if (getSlidesId(lesson.slides)) {
+      saveRecent(unit.id, lesson.number);
+    }
+  });
+
+  showPage("unit-detail");
+  saveRecent(unit.id, null);
+}
+
+function getSlidesId(url) {
+  if (!url || typeof url !== "string") return "";
+  const match = url.match(/\/presentation\/d\/([a-zA-Z0-9_-]+)/);
+  return match ? match[1] : "";
+}
+
+function previewSlides(lesson, unit) {
+  const id = getSlidesId(lesson.slides);
+  if (!id) return;
+
+  document.getElementById("modalTitle").textContent =
+    `Unit ${unit.id} · ${lesson.title}`;
+
+  document.getElementById("slidesFrame").src =
+    `https://docs.google.com/presentation/d/${id}/embed?start=false&loop=false&delayms=3000`;
+
+  document.getElementById("slidesModal").classList.add("open");
+}
+
+function makeSlidesCopy(lesson) {
+  const id = getSlidesId(lesson.slides);
+  if (!id) return;
+
+  window.open(
+    `https://docs.google.com/presentation/d/${id}/copy`,
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
+
+function closeSlides() {
+  document.getElementById("slidesModal").classList.remove("open");
+  document.getElementById("slidesFrame").src = "";
+}
+
+document.getElementById("slidesModal").addEventListener("click", event => {
+  if (event.target.id === "slidesModal") closeSlides();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeSlides();
+});
+
+function saveRecent(unitId, lessonNumber) {
+  const unit = mathwordUnits.find(item => item.id === unitId);
+  if (!unit) return;
+
+  let recent = JSON.parse(localStorage.getItem("mathwordRecent") || "[]");
+
+  const key = `${unitId}-${lessonNumber || 0}`;
+  recent = recent.filter(item => item.key !== key);
+
+  recent.unshift({
+    key,
+    unitId,
+    lessonNumber,
+    unitTitle: unit.title,
+    lessonTitle: lessonNumber
+      ? mathwordLessons[unitId][lessonNumber - 1].title
+      : "Unit overview"
+  });
+
+  recent = recent.slice(0, 6);
+  localStorage.setItem("mathwordRecent", JSON.stringify(recent));
+  renderRecent();
+}
+
+function renderRecent() {
+  const container = document.getElementById("recentList");
+  const recent = JSON.parse(localStorage.getItem("mathwordRecent") || "[]");
+
+  container.innerHTML = "";
+
+  if (!recent.length) {
+    container.innerHTML =
+      '<div class="empty-state">Lessons you open will appear here.</div>';
+    return;
+  }
+
+  recent.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "recent-item";
+
+    const button = document.createElement("button");
+    button.textContent = item.lessonTitle;
+    button.addEventListener("click", () => openUnit(item.unitId));
+
+    const small = document.createElement("small");
+    small.textContent = `Grade 5 · Unit ${item.unitId} · ${item.unitTitle}`;
+
+    card.append(button, small);
+    container.appendChild(card);
   });
 }
 
-function editResource(id) {
-  const resource=resources.find(r=>r.id===id);
-  const value=prompt("Paste a shareable PDF link for "+resource.name+":",resource.url || "");
-  if(value===null) return;
-  if(value.trim() && !safeURL(value.trim())) {
-    alert("Please enter a valid link beginning with https:// or http://");
-    return;
-  }
-  resource.url=value.trim();
-  saveResources();
-  renderResources();
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  })[character]);
 }
 
-function addResource() {
-  const name=prompt("What is the name of this resource?");
-  if(!name || !name.trim()) return;
-  const url=prompt("Paste its PDF link (you can leave this blank and add it later):");
-  if(url===null) return;
-  if(url.trim() && !safeURL(url.trim())) {
-    alert("Please enter a valid https:// or http:// link.");
-    return;
-  }
-  resources.push({
-    id:"resource-"+Date.now(),
-    name:name.trim(),
-    type:"Additional Resource",
-    url:url.trim()
-  });
-  saveResources();
-  renderResources();
-}
+document.getElementById("unitSearch").addEventListener("input", event => {
+  renderUnits(event.target.value);
+});
 
-function openResource(id) {
-  const resource=resources.find(r=>r.id===id);
-  if(!resource || !resource.url) {
-    alert("Add a PDF link to this resource first.");
-    return;
-  }
-  window.open(resource.url,"_blank","noopener");
-}
-
-function previewResource(id) {
-  const resource=resources.find(r=>r.id===id);
-  if(!resource || !resource.url) return;
-  document.getElementById("pdfTitle").textContent=resource.name;
-  document.getElementById("pdfFrame").src=resource.url;
-  document.getElementById("pdfModal").classList.add("open");
-}
-
-function closePDF() {
-  document.getElementById("pdfModal").classList.remove("open");
-  document.getElementById("pdfFrame").src="about:blank";
-}
-
-function uploadPDF(event) {
-  const file=event.target.files[0];
-  if(!file) return;
-  if(file.type!=="application/pdf") {
-    alert("Please choose a PDF file.");
-    return;
-  }
-  const id="upload-"+Date.now();
-  const url=URL.createObjectURL(file);
-  temporaryFiles[id]=url;
-  resources.push({
-    id,
-    name:file.name.replace(/\.pdf$/i,""),
-    type:"Uploaded PDF",
-    url,
-    temporary:true
-  });
-  // The file itself is only available in this browser session.
-  renderResources();
-  alert("PDF added for temporary preview. To keep it permanently, add the PDF file to your GitHub repository.");
-  event.target.value="";
-}
-
-function saveLesson() {
-  const title=document.getElementById("lessonTitle").value.trim();
-  if(!title) {
-    alert("Please enter a lesson title.");
-    return;
-  }
-  const lesson={
-    id:Date.now(),
-    title,
-    date:document.getElementById("lessonDate").value,
-    unit:document.getElementById("lessonUnit").value,
-    notes:document.getElementById("lessonNotes").value
-  };
-  const lessons=JSON.parse(localStorage.getItem("mathwordLessons") || "[]");
-  lessons.unshift(lesson);
-  localStorage.setItem("mathwordLessons",JSON.stringify(lessons));
-  document.getElementById("lessonTitle").value="";
-  document.getElementById("lessonDate").value="";
-  document.getElementById("lessonUnit").value="";
-  document.getElementById("lessonNotes").value="";
-  renderLessons();
-  alert("Lesson plan saved on this device.");
-}
-
-function renderLessons() {
-  const list=document.getElementById("lessonList");
-  const lessons=JSON.parse(localStorage.getItem("mathwordLessons") || "[]");
-  list.innerHTML="";
-  if(!lessons.length) {
-    list.innerHTML='<div class="empty">No lesson plans saved yet.</div>';
-    return;
-  }
-  lessons.forEach(lesson=>{
-    const card=document.createElement("div");
-    card.className="lesson";
-    const title=document.createElement("h3");
-    title.textContent=lesson.title;
-    const details=document.createElement("p");
-    details.textContent=[lesson.date,lesson.unit,lesson.notes].filter(Boolean).join("\n");
-    const remove=document.createElement("button");
-    remove.className="secondary";
-    remove.textContent="Delete";
-    remove.onclick=()=>{
-      const updated=lessons.filter(item=>item.id!==lesson.id);
-      localStorage.setItem("mathwordLessons",JSON.stringify(updated));
-      renderLessons();
-    };
-    card.append(title,details,remove);
-    list.appendChild(card);
-  });
-}
-
-renderResources();
-renderLessons();
+renderUnits();
+renderRecent();
 </script>
 </body>
 </html>
